@@ -5,6 +5,8 @@ import urllib2
 import os
 from geopy.geocoders import Nominatim
 from dotenv import load_dotenv
+from flask import Flask, render_template
+import json
 
 # Environment
 load_dotenv()
@@ -17,6 +19,17 @@ geo_user = os.getenv("GEO_USER")
 geolocator = Nominatim(user_agent=geo_user)
 location = geolocator.geocode(geo_loc)
 
-# Fetching the data
-string = "https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&appid={}".format(location.latitude, location.longitude, api_key)
-contents = urllib2.urlopen(string).read()
+# Server
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    # Fetching the data
+    string = "https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&appid={}".format(location.latitude, location.longitude, api_key)
+    contents = urllib2.urlopen(string).read()
+    data = json.loads(contents)
+    forecast = data['daily']
+    return render_template('index.html', forecast=forecast)
+
+if __name__ == '__main__':
+    app.run(debug=True)

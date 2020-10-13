@@ -1,0 +1,132 @@
+:root {
+    /** Colors **/
+    --white-color: #fff;
+
+    /** Fonts **/
+    --font-poppins: 'Poppins', sans-serif;
+    --font-roboto: 'Roboto', sans-serif;
+    --font-staatliches: 'Staatliches', cursive;
+
+    /** Shadows **/
+    --shadow-ondark: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: #0F2027;
+    background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);
+    background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027);
+}
+
+/** Logo **/
+#logo {
+    font-size: 30px;
+    font-family: var(--font-staatliches);
+    color: var(--white-color);
+    text-shadow: var(--shadow-ondark);
+    padding: 1.5rem 0;
+}
+
+/** Weather Card **/
+#current-weather {
+    padding: 50px 0;
+}
+
+.current-weather-card {
+    padding: 2rem 2rem 1rem 2rem;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.current-weather-card h2 {
+    font-family: var(--font-poppins);
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.current-weather-card h4 {
+    font-family: var(--font-poppins);
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.current-weather-card span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.thin-line {
+    height: 100px;
+    width: 1px;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin: 0 30px;
+}
+
+.current-weather-card img {
+    height: 5rem;
+}
+
+.current-weather-card p {
+    font-family: var(--font-roboto);
+    font-size: 10px;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+/** Forecast **/
+#forecast {
+    padding: 1rem 0;
+}
+
+#forecast h4 {
+    font-family: var(--font-staatliches);
+    color: var(--white-color);
+    font-size: 20px;
+    text-shadow: var(--shadow-ondark);
+}
+
+.weather-days {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    border-bottom: var(--white-color) 0.3px solid;
+}
+
+.weather-day h5 {
+    color: var(--white-color);
+    font-size: 15px;
+    font-family: var(--font-poppins);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.weather-img {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.weather-day img {
+    width: 20px;
+}
+
+.weather-day .tempe h5 {
+    font-size: 13px;
+    font-family: var(--font-roboto);
+    margin: 0;
+}
+
+.weather-day .tempe h5:nth-of-type(2) {
+    font-weight: 200;
+}
