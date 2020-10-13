@@ -24,7 +24,7 @@
                     <span>
                         <img src="../static/images/sun.png" alt="sun">
                         <div class="thin-line"></div>
-                        <h4>25°C</h4>
+                        <h4 class="weather-current">{{ current }}</h4>
                     </span>
                     <p>* Weather from OpenWeatherMap API</p>
                 </div>
@@ -58,13 +58,13 @@
                 <div class="col-12 weather-days">
                     {% for weather in forecast %}
                         <div class="weather-day">
-                            <h5>12/10</h5>
+                            <h5 class="weather-date">12/10</h5>
                             <div class="weather-img">
                                 <img src="../static/images/sun.png" alt="sun">
                             </div>
                             <div class="tempe">
-                                <h5>{{ weather['temp']['max'] }}</h5>
-                                <h5>{{ weather['temp']['min'] }}</h5>
+                                <h5 class="weather-max">{{ weather['temp']['max'] }}</h5>
+                                <h5 class="weather-min">{{ weather['temp']['min'] }}</h5>
                             </div>
                         </div>
                     {% endfor %}
@@ -72,5 +72,7 @@
             </div>
         </div>
     </div>
+
+    <script src="../static/js/script.js"></script>
 </body>
 </html>
