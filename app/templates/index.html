@@ -22,9 +22,14 @@
                 <div class="card current-weather-card">
                     <h2>API current</h2>
                     <span>
-                        <img src="../static/images/sun.png" alt="sun">
+                        <p class="hidden-value-main" style="display: none;">
+                            {% for main in current['weather'] %}
+                                {{ main['main'] }}
+                            {% endfor %}
+                        </p>
+                        <img class="main-weather-current" src="../static/images/sun.png" alt="sun">
                         <div class="thin-line"></div>
-                        <h4 class="weather-current">{{ current }}</h4>
+                        <h4 class="weather-current">{{ current['temp'] }}</h4>
                     </span>
                     <p>* Weather from OpenWeatherMap API</p>
                 </div>
@@ -60,8 +65,13 @@
                         <div class="weather-day">
                             <h5 class="weather-date">12/10</h5>
                             <div class="weather-img">
-                                <img src="../static/images/sun.png" alt="sun">
+                                <img class="main-weather" src="" alt="sun">
                             </div>
+                            <p class="hidden-value" style="display: none;">
+                                {% for main in weather['weather'] %}
+                                    {{ main['main'] }}
+                                {% endfor %}
+                            </p>
                             <div class="tempe">
                                 <h5 class="weather-max">{{ weather['temp']['max'] }}</h5>
                                 <h5 class="weather-min">{{ weather['temp']['min'] }}</h5>

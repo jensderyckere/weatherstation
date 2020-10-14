@@ -29,7 +29,8 @@ def index():
     contents = urllib2.urlopen(string).read()
     data = json.loads(contents)
     forecast = data['daily']
-    current = data['current']['temp']
+    current = data['current']
+
     return render_template('index.html', forecast=forecast, current=current)
 
 if __name__ == '__main__':
