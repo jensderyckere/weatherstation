@@ -7,6 +7,7 @@ from geopy.geocoders import Nominatim
 from dotenv import load_dotenv
 from flask import Flask, render_template
 import json
+import serial, time
 
 # Environment
 load_dotenv()
@@ -18,6 +19,12 @@ geo_user = os.getenv("GEO_USER")
 # Getting the location
 geolocator = Nominatim(user_agent=geo_user)
 location = geolocator.geocode(geo_loc)
+
+# Getting micro:bit data
+port = "/dev/ttyACM0"
+baud = 115200
+s = serial.Serial(port)
+s.baudrate = baud
 
 # Server
 app = Flask(__name__)
@@ -31,7 +38,12 @@ def index():
     forecast = data['daily']
     current = data['current']
 
-    return render_template('index.html', forecast=forecast, current=current)
+    while True:
+        indoor = s.readline()
+        indoor = int(indoor[0:4])
+        print(indoor)
+
+        return render_template('index.html', forecast=forecast, current=current, indoor=indoor)
 
 if __name__ == '__main__':
     app.run(debug=True)
